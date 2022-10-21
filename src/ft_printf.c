@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include "libft/libft.h"
+#include "../include/ft_printf.h"
+#include "../include/libft.h"
 
 int	ft_printf(const char *s, ...)
 {
@@ -33,11 +33,11 @@ int	ft_printf(const char *s, ...)
 	return (0);
 }
 
-int	main(void)
-{
-	int	i;
-
-	i = 10;
-	ft_printf("dcdc", i, 'c', 1000, 'q');
-	return (0);
-}
+//int	main(void)
+//{
+//	int	i;
+//
+//	i = 10;
+//	ft_printf("dcdc", i, 'c', 1000, 'q');
+//	return (0);
+//}

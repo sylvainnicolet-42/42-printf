@@ -11,14 +11,21 @@
 # **************************************************************************** #
 
 # VARIABLES
-NAME	= libftprintf.a
-OBJS		= ${SRCS:.c=.o}
-GCC		= gcc
-RM 		= rm -f
-CFLAGS 	= -Wall -Werror -Wextra
+NAME		= libftprintf.a
+INCLUDE		= include
+LIBFT		= libft
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra -I
+RM			= rm -f
+AR			= ar rcs
 
 # SOURCES
-SRCS	= 	ft_printf.c \
+SRC_FILES	=	ft_printf
+SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
+OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
+OBJF		=	.cache_exists
 
 # COLORS
 # https://chezsoi.org/lucas/blog/colorez-les-sorties-de-vos-scripts-shell-unix.html
@@ -45,21 +52,34 @@ _IPURPLE=$'\x1b[45m'
 _ICYAN=$'\x1b[46m'
 _IWHITE=$'\x1b[47m'
 
-.c.o:
-			${GCC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
-
-${NAME}:	${OBJS}
-			ar rcs ${NAME} ${OBJS}
-
 all:		${NAME}
 
+${NAME}:	${OBJ}
+			@make -C ${LIBFT}
+			@cp libft/libft.a .
+			@mv libft.a ${NAME}
+			@${AR} ${NAME} ${OBJ}
+			@echo "${_IGREEN}ft_printf compiled!${_END}"
+
+${OBJ_DIR}%.o: ${SRC_DIR}%.c | ${OBJF}
+			@echo "${_IYELLOW}Compiling: $< ${_END}"
+			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@
+
+${OBJF}:
+			@mkdir -p ${OBJ_DIR}
+
 clean:
-			${RM} ${OBJS}
+			@${RM} -rf ${OBJ_DIR}
+			@make clean -C ${LIBFT}
+			@echo "${_IBLUE}ft_printf: object files cleaned!${_END}"
 
 fclean:		clean
-			${RM} ${NAME}
+			@${RM} -f ${NAME}
+			@${RM} -f ${LIBFT}/libft.a
+			@echo "${_ICYAN}ft_printf: executable files cleaned!${_END}"
+			@echo "${_ICYAN}libft: executable files cleaned!${_END}"
 
 re:			fclean all
-			@echo "${_IGREEN}ft_printf: clean and rebuild${_END}"
+			@echo "${_IGREEN}ft_printf : clean and rebuild!${_END}"
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
