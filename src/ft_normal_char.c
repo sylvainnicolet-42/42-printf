@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_new.c                                      :+:      :+:    :+:   */
+/*   ft_normal_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 15:37:41 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/22 15:37:42 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 16:09:49 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 16:09:50 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-t_print_list	*ft_list_new(char *s)
+int	ft_normal_char(t_print_list **list, char c)
 {
-	t_print_list	*list;
+	t_print_list	*new_elem;
+	char			*s;
 
-	list = malloc(sizeof(*list));
-	if (!list)
-		return (NULL);
-	list->s = s;
-	list->next = NULL;
-	return (list);
+	s = malloc(sizeof(char) * 2);
+	if (!s)
+		return (0);
+	s[0] = c;
+	s[1] = 0;
+	new_elem = ft_list_new(s);
+	if (!new_elem)
+		return (0);
+	ft_list_add_back(list, new_elem);
+	return (1);
 }

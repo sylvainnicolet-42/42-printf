@@ -22,7 +22,12 @@ AR			= ar rcs
 A_OUT		= a.out
 
 # SOURCES
-SRC_FILES	=	ft_printf ft_list_new ft_list_add_back ft_list_print
+SRC_FILES	=	ft_printf \
+				ft_list_new \
+				ft_list_add_back \
+				ft_list_free \
+				ft_list_print \
+				ft_normal_char
 SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
 OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
 OBJF		=	.cache_exists
@@ -83,7 +88,7 @@ fclean:		clean
 re:			fclean all
 			@echo "${_IGREEN}ft_printf : clean and rebuild!${_END}"
 
-run:
+run:		all
 			@${CC} ${CFLAGS} ${SRC_DIR}/ft_printf.c -L. -lftprintf
 			@./${A_OUT}
 

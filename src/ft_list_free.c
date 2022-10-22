@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_new.c                                      :+:      :+:    :+:   */
+/*   ft_list_free.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 15:37:41 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/22 15:37:42 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 16:49:31 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 16:49:32 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-t_print_list	*ft_list_new(char *s)
+void	ft_list_free(t_print_list *lst)
 {
-	t_print_list	*list;
+	t_print_list	*tmp;
 
-	list = malloc(sizeof(*list));
-	if (!list)
-		return (NULL);
-	list->s = s;
-	list->next = NULL;
-	return (list);
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
 }

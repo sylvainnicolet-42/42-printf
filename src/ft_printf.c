@@ -15,23 +15,30 @@
 int	ft_printf(const char *s, ...)
 {
 	t_print_list	*list;
-	t_print_list	*new_elem;
 	int				i;
+	int				nb_char;
+	int				nb_normal_char;
 
 	list = NULL;
+	nb_char = 0;
 	i = 0;
 	while (s[i])
 	{
+		nb_normal_char = ft_normal_char(&list, s[i]);
+		if (!nb_normal_char)
+			return (0);
+		nb_char += nb_normal_char;
 		i++;
 	}
-	new_elem = ft_list_new((char *) s);
-	ft_list_add_back(&list, new_elem);
 	ft_list_print(list);
-	return (0);
+	ft_list_free(list);
+	return (nb_char);
 }
 
-int	main(void)
-{
-	ft_printf("caca%d", 0);
-	return (0);
-}
+//int	main(void)
+//{
+//	ft_printf("123\n");
+//	printf("%d\n", ft_printf("123"));
+//	printf("%d\n", printf("123"));
+//	return (0);
+//}
