@@ -6,13 +6,12 @@
 #    By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 20:11:00 by synicole          #+#    #+#              #
-#    Updated: 2022/10/20 20:11:04 by synicole         ###   ########.fr        #
+#    Updated: 2022/10/22 14:52:16 by synicole         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARIABLES
 NAME		= libftprintf.a
-INCLUDE		= include
 LIBFT		= libft
 SRC_DIR		= src/
 OBJ_DIR		= obj/
@@ -20,6 +19,7 @@ CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 AR			= ar rcs
+A_OUT		= a.out
 
 # SOURCES
 SRC_FILES	=	ft_printf
@@ -63,7 +63,7 @@ ${NAME}:	${OBJ}
 
 ${OBJ_DIR}%.o: ${SRC_DIR}%.c | ${OBJF}
 			@echo "${_IYELLOW}Compiling: $< ${_END}"
-			@${CC} ${CFLAGS} ${INCLUDE} -c $< -o $@
+			@${CC} ${CFLAGS} . -c $< -o $@
 
 ${OBJF}:
 			@mkdir -p ${OBJ_DIR}
@@ -74,12 +74,17 @@ clean:
 			@echo "${_IBLUE}ft_printf: object files cleaned!${_END}"
 
 fclean:		clean
-			@${RM} -f ${NAME}
-			@${RM} -f ${LIBFT}/libft.a
+			@${RM} ${NAME}
+			@${RM} ${LIBFT}/libft.a
+			@${RM} ${A_OUT}
 			@echo "${_ICYAN}ft_printf: executable files cleaned!${_END}"
 			@echo "${_ICYAN}libft: executable files cleaned!${_END}"
 
 re:			fclean all
 			@echo "${_IGREEN}ft_printf : clean and rebuild!${_END}"
+
+run:
+			@${CC} ${CFLAGS} ${SRC_DIR}/ft_printf.c -L. -lftprintf
+			./${A_OUT}
 
 .PHONY:		all clean fclean re

@@ -10,34 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include "../include/libft.h"
+#include "../ft_printf.h"
 
 int	ft_printf(const char *s, ...)
 {
-	va_list	args;
-	int		num_args;
-	int		i;
-
-	num_args = ft_strlen(s);
-	va_start(args, s);
-	i = 0;
-	while (i < num_args)
-	{
-		if (s[i] == 'd')
-			printf("%d\n", va_arg(args, int));
-		else if (s[i] == 'c')
-			printf("%c\n", va_arg(args, int));
-		i++;
-	}
+	(void) s;
+	printf("Salut !\n");
 	return (0);
 }
 
 //int	main(void)
 //{
-//	int	i;
-//
-//	i = 10;
-//	ft_printf("dcdc", i, 'c', 1000, 'q');
+//	ft_printf("test", 0);
 //	return (0);
 //}
