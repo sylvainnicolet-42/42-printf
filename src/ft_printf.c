@@ -14,30 +14,31 @@
 
 int	ft_printf(const char *s, ...)
 {
-	t_print_list	*list;
+	va_list			args;
 	int				i;
-	int				nb_char;
-	int				nb_normal_char;
+	int				count_print;
 
-	list = NULL;
-	nb_char = 0;
+	va_start(args, s);
+	count_print = 0;
 	i = 0;
 	while (s[i])
 	{
-		nb_normal_char = ft_normal_char(&list, s[i]);
-		if (!nb_normal_char)
-			return (0);
-		nb_char += nb_normal_char;
+		if (s[i] == '%')
+		{
+			i++;
+			count_print += ft_formats(args, s[i]);
+		}
+		else
+			count_print += ft_print_char(s[i]);
 		i++;
 	}
-	ft_list_print(list);
-	ft_list_free(list);
-	return (nb_char);
+	va_end(args);
+	return (count_print);
 }
 
 //int	main(void)
 //{
-//	ft_printf("123\n");
+//	ft_printf("123%c\n", '0');
 //	printf("%d\n", ft_printf("123"));
 //	printf("%d\n", printf("123"));
 //	return (0);

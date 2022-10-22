@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdio.h>
-# include <stdlib.h>
+# include <unistd.h>
 # include <stdarg.h>
 
 typedef struct print_list
@@ -23,12 +23,9 @@ typedef struct print_list
 	struct print_list	*next;
 }	t_print_list;
 
-int				ft_printf(const char *s, ...);
-int				ft_normal_char(t_print_list **list, char c);
+int	ft_printf(const char *s, ...);
+int	ft_formats(va_list args, char format);
 
-t_print_list	*ft_list_new(char *s);
-void			ft_list_add_back(t_print_list **lst, t_print_list *new);
-void			ft_list_free(t_print_list *lst);
-void			ft_list_print(t_print_list *list);
+int	ft_print_char(int c);
 
 #endif

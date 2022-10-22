@@ -23,11 +23,8 @@ A_OUT		= a.out
 
 # SOURCES
 SRC_FILES	=	ft_printf \
-				ft_list_new \
-				ft_list_add_back \
-				ft_list_free \
-				ft_list_print \
-				ft_normal_char
+				ft_formats \
+				ft_print_char
 SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
 OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
 OBJF		=	.cache_exists

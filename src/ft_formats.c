@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_add_back.c                                 :+:      :+:    :+:   */
+/*   ft_formats.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 15:31:46 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/22 15:31:48 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 19:46:04 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 19:46:07 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_list_add_back(t_print_list **lst, t_print_list *new)
+int	ft_formats(va_list args, char format)
 {
-	t_print_list	*current_el;
+	int	count;
 
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		current_el = *lst;
-		while (current_el->next)
-			current_el = current_el->next;
-		current_el->next = new;
-	}
+	count = 0;
+	if (format == 'c')
+		count += ft_print_char(va_arg(args, int));
+	return (count);
 }
