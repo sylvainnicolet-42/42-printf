@@ -24,7 +24,8 @@ A_OUT		= a.out
 # SOURCES
 SRC_FILES	=	ft_printf \
 				ft_formats \
-				ft_print_char
+				ft_print_char \
+				ft_print_percent
 SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
 OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
 OBJF		=	.cache_exists

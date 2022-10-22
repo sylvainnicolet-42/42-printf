@@ -19,5 +19,7 @@ int	ft_formats(va_list args, char format)
 	count = 0;
 	if (format == 'c')
 		count += ft_print_char(va_arg(args, int));
+	else if (format == '%')
+		count += ft_print_percent();
 	return (count);
 }
