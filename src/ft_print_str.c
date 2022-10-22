@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 20:15:09 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/20 20:15:12 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 20:14:13 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 20:14:14 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
+#include "../libft/libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
+int	ft_print_str(char *str)
+{
+	int	i;
 
-int	ft_printf(const char *s, ...);
-int	ft_formats(va_list *args, const char format);
-
-int	ft_print_char(int c);
-int	ft_print_percent(void);
-int	ft_print_str(char *str);
-
-#endif
+	i = 0;
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}

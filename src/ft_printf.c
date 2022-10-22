@@ -14,9 +14,9 @@
 
 int	ft_printf(const char *s, ...)
 {
-	va_list			args;
-	int				i;
-	int				count_print;
+	va_list	args;
+	int		i;
+	int		count_print;
 
 	va_start(args, s);
 	count_print = 0;
@@ -26,7 +26,7 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%')
 		{
 			i++;
-			count_print += ft_formats(args, s[i]);
+			count_print += ft_formats(&args, s[i]);
 		}
 		else
 			count_print += ft_print_char(s[i]);
@@ -38,8 +38,7 @@ int	ft_printf(const char *s, ...)
 
 //int	main(void)
 //{
-//	ft_printf("123%c\n", '0');
-//	printf("%d\n", ft_printf("123"));
-//	printf("%d\n", printf("123"));
+//	//ac.cb.
+//	ft_printf("%c-----%s--%%", 'a', "s");
 //	return (0);
 //}
