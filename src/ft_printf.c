@@ -14,13 +14,24 @@
 
 int	ft_printf(const char *s, ...)
 {
-	(void) s;
-	printf("Salut !\n");
+	t_print_list	*list;
+	t_print_list	*new_elem;
+	int				i;
+
+	list = NULL;
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	new_elem = ft_list_new((char *) s);
+	ft_list_add_back(&list, new_elem);
+	ft_list_print(list);
 	return (0);
 }
 
-//int	main(void)
-//{
-//	ft_printf("test", 0);
-//	return (0);
-//}
+int	main(void)
+{
+	ft_printf("caca%d", 0);
+	return (0);
+}

@@ -22,7 +22,7 @@ AR			= ar rcs
 A_OUT		= a.out
 
 # SOURCES
-SRC_FILES	=	ft_printf
+SRC_FILES	=	ft_printf ft_list_new ft_list_add_back ft_list_print
 SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
 OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
 OBJF		=	.cache_exists
@@ -85,6 +85,6 @@ re:			fclean all
 
 run:
 			@${CC} ${CFLAGS} ${SRC_DIR}/ft_printf.c -L. -lftprintf
-			./${A_OUT}
+			@./${A_OUT}
 
 .PHONY:		all clean fclean re

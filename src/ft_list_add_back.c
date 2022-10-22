@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_list_add_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 20:15:09 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/20 20:15:12 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 15:31:46 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 15:31:48 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../ft_printf.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <stdarg.h>
-
-typedef struct print_list
+void	ft_list_add_back(t_print_list **lst, t_print_list *new)
 {
-	char				*s;
-	struct print_list	*next;
-}	t_print_list;
+	t_print_list	*current_el;
 
-int				ft_printf(const char *s, ...);
-t_print_list	*ft_list_new(char *s);
-void			ft_list_add_back(t_print_list **lst, t_print_list *new);
-void			ft_list_print(t_print_list *list);
-
-#endif
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		current_el = *lst;
+		while (current_el->next)
+			current_el = current_el->next;
+		current_el->next = new;
+	}
+}
