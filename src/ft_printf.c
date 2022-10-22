@@ -38,7 +38,8 @@ int	ft_printf(const char *s, ...)
 
 //int	main(void)
 //{
-//	//ac.cb.
+//	ac.cb.
 //	ft_printf("%c-----%s--%%", 'a', "s");
+//	printf("%d", 12);
 //	return (0);
 //}

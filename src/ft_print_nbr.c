@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_formats.c                                       :+:      :+:    :+:   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: synicole <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 19:46:04 by synicole          #+#    #+#             */
-/*   Updated: 2022/10/22 19:46:07 by synicole         ###   ########.fr       */
+/*   Created: 2022/10/22 21:32:36 by synicole          #+#    #+#             */
+/*   Updated: 2022/10/22 21:32:37 by synicole         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+#include "../libft/libft.h"
 
-int	ft_formats(va_list *args, const char format)
+int	ft_print_nbr(int n)
 {
-	int	count;
+	char	*nbr;
+	int		len;
 
-	count = 0;
-	if (format == 'c')
-		count += ft_print_char(va_arg(*args, int));
-	else if (format == '%')
-		count += ft_print_percent();
-	else if (format == 's')
-		count += ft_print_str(va_arg(*args, char *));
-	else if (format == 'd' || format == 'i')
-		count += ft_print_nbr(va_arg(*args, int));
-	return (count);
+	nbr = ft_itoa(n);
+	if (!nbr)
+		return (0);
+	len = ft_print_str(nbr);
+	free(nbr);
+	return (len);
 }

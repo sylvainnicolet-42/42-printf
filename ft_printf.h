@@ -23,5 +23,6 @@ int	ft_formats(va_list *args, const char format);
 int	ft_print_char(int c);
 int	ft_print_percent(void);
 int	ft_print_str(char *str);
+int	ft_print_nbr(int n);
 
 #endif
