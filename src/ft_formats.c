@@ -27,5 +27,7 @@ int	ft_formats(va_list *args, const char format)
 		count += ft_print_nbr(va_arg(*args, int));
 	else if (format == 'u')
 		count += ft_print_unsigned(va_arg(*args, unsigned int));
+	else if (format == 'x' || format == 'X')
+		count += ft_print_hex(va_arg(*args, int), format);
 	return (count);
 }

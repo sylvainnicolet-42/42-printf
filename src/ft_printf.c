@@ -36,8 +36,8 @@ int	ft_printf(const char *s, ...)
 	return (count_print);
 }
 
-int	main(void)
-{
-	printf("%X", 129898);
-	return (0);
-}
+//int	main(void)
+//{
+//	ft_printf("%x", -16);
+//	return (0);
+//}
