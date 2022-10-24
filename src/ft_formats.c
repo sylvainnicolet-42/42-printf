@@ -25,5 +25,7 @@ int	ft_formats(va_list *args, const char format)
 		count += ft_print_str(va_arg(*args, char *));
 	else if (format == 'd' || format == 'i')
 		count += ft_print_nbr(va_arg(*args, int));
+	else if (format == 'u')
+		count += ft_print_unsigned(va_arg(*args, unsigned int));
 	return (count);
 }

@@ -36,10 +36,8 @@ int	ft_printf(const char *s, ...)
 	return (count_print);
 }
 
-//int	main(void)
-//{
-//	ac.cb.
-//	ft_printf("%c-----%s--%%", 'a', "s");
-//	printf("%d", 12);
-//	return (0);
-//}
+int	main(void)
+{
+	printf("%X", 129898);
+	return (0);
+}
