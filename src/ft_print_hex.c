@@ -13,93 +13,49 @@
 #include "../ft_printf.h"
 #include "../libft/libft.h"
 
-static char	*ft_strtoupper(char *s)
+static int	ft_get_hex_length(unsigned int n)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] >= 'a' && s[i] <= 'z')
-			s[i] = s[i] - 32;
-		i++;
-	}
-	return (s);
-}
-
-static int	ft_getlength(int n)
-{
-	int	length;
-
-	length = 1;
-	if (n < 0)
-	{
-		n *= -1;
-		length++;
-	}
+	if (!n)
+		return (1);
+	len = 0;
 	while (n > 0)
 	{
-		n /= 16;
-		length++;
+		len++;
+		n = n / 16;
 	}
-	return (length);
-}
-
-static char	*ft_putnbr(int n, char *ptr)
-{
-	int		temp;
-	int		i;
-
-	i = 0;
-	if (n < 0)
-	{
-		ptr[0] = '-';
-		n *= -1;
-		i++;
-	}
-	while (n > 0)
-	{
-		temp = n % 16;
-		if (temp < 10)
-			ptr[i] = temp + 48;
-		else
-			ptr[i] = temp + 55;
-		n /= 16;
-		i++;
-	}
-	return (ptr);
-}
-
-static char	*ft_dec_to_hexa(int n)
-{
-	int		length;
-	char	*ptr;
-
-	if (n == -2147483648)
-	{
-		ptr = ft_substr("-80000000", 0, 9);
-		if (!ptr)
-			return (0);
-		return (ptr);
-	}
-	length = ft_getlength(n);
-	ptr = ft_calloc(sizeof(char), length + 1);
-	if (!ptr)
-		return (0);
-	return (ft_putnbr(n, ptr));
-}
-
-int	ft_print_hex(int n, const char format)
-{
-	char	*nbr;
-	int		len;
-
-	nbr = ft_dec_to_hexa(n);
-	if (!nbr)
-		return (0);
-	if (format == 'X')
-		nbr = ft_strtoupper(nbr);
-	len = ft_print_str(nbr);
-	free(nbr);
 	return (len);
+}
+
+static void	ft_put_hex(unsigned int n, const char format)
+{
+	if (!n)
+		ft_putchar_fd('0', 1);
+	else
+	{
+		if (n >= 16)
+		{
+			ft_put_hex(n / 16, format);
+			ft_put_hex(n % 16, format);
+		}
+		else
+		{
+			if (n < 10)
+				ft_putchar_fd((n + '0'), 1);
+			else
+			{
+				if (format == 'x')
+					ft_putchar_fd((n - 10 + 'a'), 1);
+				if (format == 'X')
+					ft_putchar_fd((n - 10 + 'A'), 1);
+			}
+		}
+	}
+}
+
+int	ft_print_hex(unsigned int n, const char format)
+{
+	ft_put_hex(n, format);
+	return (ft_get_hex_length(n));
 }

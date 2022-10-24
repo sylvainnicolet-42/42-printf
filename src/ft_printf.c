@@ -38,6 +38,8 @@ int	ft_printf(const char *s, ...)
 
 //int	main(void)
 //{
-//	ft_printf("%x", -16);
+//	int	test = 0;
+//	printf("original = %x\n", test);
+//	ft_printf("mine = %x\n", test);
 //	return (0);
 //}
