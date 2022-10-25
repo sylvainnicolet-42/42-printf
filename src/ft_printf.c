@@ -35,12 +35,3 @@ int	ft_printf(const char *s, ...)
 	va_end(args);
 	return (count_print);
 }
-
-//int	main(void)
-//{
-////	int	test = 0;
-////	printf("original = %x\n", test);
-////	ft_printf("mine = %x\n", test);
-//	ft_putchar_fd((10 - 10) + 97, 1);
-//	return (0);
-//}

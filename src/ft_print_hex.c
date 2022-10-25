@@ -13,7 +13,7 @@
 #include "../ft_printf.h"
 #include "../libft/libft.h"
 
-static int	ft_get_hex_length(unsigned int n)
+static int	ft_get_hex_len(unsigned int n)
 {
 	int	len;
 
@@ -57,5 +57,5 @@ static void	ft_put_hex(unsigned int n, const char format)
 int	ft_print_hex(unsigned int n, const char format)
 {
 	ft_put_hex(n, format);
-	return (ft_get_hex_length(n));
+	return (ft_get_hex_len(n));
 }
