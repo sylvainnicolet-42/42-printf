@@ -26,5 +26,6 @@ int	ft_print_str(char *str);
 int	ft_print_nbr(int n);
 int	ft_print_unbr(unsigned int n);
 int	ft_print_hex(unsigned int n, const char format);
+int	ft_print_ptr(uintptr_t ptr);
 
 #endif

@@ -30,6 +30,6 @@ int	ft_formats(va_list *args, const char format)
 	else if (format == 'x' || format == 'X')
 		count += ft_print_hex(va_arg(*args, int), format);
 	else if (format == 'p')
-		count += ft_print_hex(va_arg(*args, int), format);
+		count += ft_print_ptr(va_arg(*args, uintptr_t));
 	return (count);
 }
