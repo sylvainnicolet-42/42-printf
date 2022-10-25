@@ -28,6 +28,7 @@ SRC_FILES	=	ft_printf \
 				ft_print_percent \
 				ft_print_str \
 				ft_print_nbr \
+				ft_print_unbr \
 				ft_print_hex
 SRC 		= 	${addprefix ${SRC_DIR}, ${addsuffix .c, ${SRC_FILES}}}
 OBJ 		= 	${addprefix ${OBJ_DIR}, ${addsuffix .o, ${SRC_FILES}}}
